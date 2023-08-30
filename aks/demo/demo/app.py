@@ -1,15 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
+
 app = Flask(__name__)
 
-#for demo purposes only to see different requests handled by instances of the application
-count = 0
-
 @app.route('/')
-def index():
-    global count
-    count += 1
-    return 'Hello from application hosted in azure kubernetes service ' + str(count)
-    #return 'Goodbye from application ' + str(count)
-
+def hello():
+    return render_template('index.html')
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
